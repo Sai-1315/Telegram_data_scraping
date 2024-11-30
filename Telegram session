@@ -7,11 +7,11 @@ from telethon.sessions import StringSession
 import asyncio
 
 # Replace these with your actual Telegram API credentials
-api_id = 123456  # Replace with your API ID
+api_id = 1234  # Replace with your API ID
 api_hash = 'your_api_hash'  # Replace with your API Hash
 
 # Specify your phone number
-phone_number = '+13333333333'  # Replace with your phone number
+phone_number = '+91 *******'  # Replace with your phone number
 
 # Create a new Telegram client session in-memory
 session = StringSession()  # Create an empty StringSession

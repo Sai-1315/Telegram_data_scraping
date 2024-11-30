@@ -47,7 +47,7 @@ Clone the Repository:
 
 bash
 Copy code
-git clone https://github.com/Amirwpi/Telegram_Scraper.git
+git clone https://github.com/Sai-1315//Telegram_Scraper.git
 cd telegram-scraper
 Install Dependencies:
 

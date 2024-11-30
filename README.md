@@ -1,131 +1,131 @@
-# Telegram_data_scraping
-Telegram Scraper
-This repository contains a powerful and flexible Telegram scraper designed to collect message data and media files from Telegram channels or groups. Built with Python and the Telethon library, this scraper is ideal for data analysts, researchers, and developers seeking to gather and analyze Telegram data for tasks such as social network analysis, market research, and content monitoring.
+# Telegram Scraper
 
-Here's an enhanced and detailed version of the Telegram Scraper README with an expanded Table of Contents, as per your request:
+This repository contains a powerful and flexible Telegram scraper designed to collect message data and media files from Telegram channels or groups. Built with Python and the Telethon library, this scraper is ideal for data analysts, researchers, and developers looking to gather and analyze data from Telegram for various purposes, such as social network analysis, market research, or content monitoring.
 
-Telegram Scraper
-This repository contains a powerful and flexible Telegram scraper designed to collect message data and media files from Telegram channels or groups. Built with Python and the Telethon library, this scraper is ideal for data analysts, researchers, and developers seeking to gather and analyze Telegram data for tasks such as social network analysis, market research, and content monitoring.
 
-Table of Contents
-Features
-Requirements
-Installation
-Usage
-Set Up Your API Credentials
-Run the Session Generator
-Start Scraping
-Merge Data
-Configuration
-How It Works
-Session Management and Login Authentication
-Main Scraper: Data and Media Collection
-Data Merging
-Error Handling
-Best Practices and Tips
-Contributing
-License
-Features
-Asynchronous Scraping: Leverages Python's asyncio and Telethon for efficient, non-blocking scraping.
-Media Support: Collects messages and attached media (e.g., images, videos, and documents) and stores them locally.
-Error Management: Handles common issues like rate limits (FloodWaitError) and two-factor authentication gracefully.
-Customizable Settings: Allows fine-tuning of scraping parameters like group/channel names, message limits, and scraping intervals.
-Data Consolidation: Combines multiple output CSV files into a single, unified dataset for analysis.
-Requirements
-Python 3.7 or later
-Required libraries:
-Telethon
-nest_asyncio
-Additional optional libraries for visualization (e.g., matplotlib)
-Install all dependencies using the provided requirements.txt file:
+## Table of Contents
 
-bash
-Copy code
-pip install -r requirements.txt
-Installation
-Clone the Repository:
+- [Features](#features)
+- [Requirements](#requirements)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Configuration](#configuration)
+- [How It Works](#how-it-works)
+  - [1. Session Management and Login Authentication](#1-session-management-and-login-authentication)
+  - [2. Main Scraper: Data and Media Collection](#2-main-scraper-data-and-media-collection)
+  - [3. Data Merging](#3-data-merging)
+- [Error Handling](#error-handling)
+- [Contributing](#contributing)
+- [License](#license)
 
-bash
-Copy code
-git clone https://github.com/Sai-1315/Telegram_data_scraping
-cd telegram-scraper
-Install Dependencies:
+## Features
 
-bash
-Copy code
-pip install -r requirements.txt
-Usage
-1. Set Up Your API Credentials
-Obtain your API ID and API Hash from the Telegram API.
-Replace placeholders in the script (api_id, api_hash, and phone_number) with your credentials.
-2. Run the Session Generator
-Run the session generator script to log in to Telegram and save your session string:
+- **Asynchronous Scraping**: Utilizes Python's `asyncio` and Telethon library for efficient and non-blocking data collection.
+- **Data and Media Download**: Fetches messages, along with any attached media (images, videos, etc.), and saves them locally.
+- **Error Management**: Includes mechanisms to handle rate limits (`FloodWaitError`) and other common exceptions gracefully.
+- **Customizable**: Allows users to define scraping parameters such as group/channel name, message limits, and scraping intervals.
+- **Data Consolidation**: Merges individual CSV files containing messages and metadata into a single, comprehensive dataset.
 
-bash
-Copy code
+## Requirements
+
+- Python 3.7 or later
+- [Telethon](https://pypi.org/project/Telethon/)
+- `nest_asyncio` for enabling nested event loops
+
+## Installation
+
+1. **Clone the Repository**
+
+    ```sh
+    git clone https://github.com/Amirwpi/Telegram_Scraper.git
+    cd telegram-scraper
+    ```
+
+2. **Install Dependencies**
+
+    Install the required Python libraries using pip:
+
+    ```sh
+    pip install -r requirements.txt
+    ```
+
+    *Note: Ensure you have `Telethon` and `nest_asyncio` in your `requirements.txt`.*
+
+## Usage
+
+### 1. Set Up Your API Credentials
+
+- Obtain your API ID and hash from the [Telegram API](https://my.telegram.org/auth).
+- Update the placeholders in the script (`api_id`, `api_hash`, and `phone_number`) with your actual credentials.
+
+### 2. Run "Telegram Session Creater.py"
+
+Execute the following command to authenticate your Telegram session:
+
+```sh
 python 01-Telegram Session Generator.py
-Follow the on-screen instructions for authentication.
+```
 
-3. Start Scraping
-Run the main scraper script to collect messages and media:
+Follow the on-screen instructions to complete authentication and retrieve your session string.
 
-bash
-Copy code
+### 3. Run the Main Scraper "Telegram Scraper.py"
+
+After obtaining the session string, run the main scraper to start collecting data:
+
+```sh
 python 02-Telegram Scraper.py
-4. Merge Data
-After scraping, consolidate the data into a single CSV file:
+```
 
-bash
-Copy code
+### 4. Merge the Data
+
+Once the scraping is complete, use the merging script to consolidate all CSV files into a single file:
+
+```sh
 python 03-merge_output_files.py
-Configuration
-Customize these parameters in Telegram Scraper.py:
+```
+##Hasn't uploaded but I will add this part as well
 
-API Credentials:
-Replace placeholders for api_id and api_hash with your Telegram API credentials.
-Session String:
-Use the session string generated by the 01-Telegram Session Generator.py script.
-Scraping Parameters:
-group_title: Name of the target Telegram group or channel.
-limit_msg: Maximum number of messages to fetch per request.
-Repeat_number: Number of iterations for repeated scraping.
-datetime_before: Timestamp for fetching messages from a specific date.
-How It Works
-1. Session Management and Login Authentication
-Handles login via Telethon, including two-factor authentication if enabled. Saves the session string for reuse.
 
-2. Main Scraper: Data and Media Collection
-Fetches messages and media from groups or channels using Telethon's GetHistoryRequest. Manages rate limits (FloodWaitError) by pausing when necessary.
+## Configuration
 
-3. Data Merging
-Combines multiple CSV files created during scraping into a single dataset for easier analysis and visualization.
+Before running the scraper, customize the following settings in `main_scraper.py`:
 
-Error Handling
-The scraper includes robust error handling:
+- **`api_id`** and **`api_hash`**: Your Telegram API credentials.
+- **`Session`**: The Telegram session that we got from "01-Telegram Session Generator.py"
+- **`group_title`**: The Telegram group or channel from which to scrape data.
+- **`limit_msg`**: Maximum number of messages to fetch per request.
+- **`Repeat_number`**: Number of iterations for repeated scraping.
+- **`datetime_before`**: The initial timestamp to begin scraping messages from.
+- 
+Important Note: Adjust the Repeat_number, datetime_before, and other parameters based on your specific data and channel requirements. It's essential to monitor the scraping process to ensure that it is functioning correctly. If an error occurs, use the last file's timestamp to continue scraping from where it stopped.
 
-FloodWaitError: Automatically waits for the required duration before retrying.
-SessionPasswordNeededError: Prompts for a two-factor authentication password if necessary.
-General Exceptions: Catches and logs unexpected issues to ensure smooth operation.
-Best Practices and Tips
-Avoid Overloading Telegram Servers: Use reasonable message limits and intervals to stay within Telegram's rate limits.
-Monitor the Process: Regularly check the scraping output to ensure data integrity.
-Handle Interrupted Sessions: Use the last file's timestamp to continue scraping from where it left off.
-Stay Ethical: Ensure compliance with Telegram's terms of service and privacy guidelines.
-Contributing
-Contributions are welcome! Here's how to contribute:
+## How It Works
 
-Fork the repository.
-Create a new branch:
-bash
-Copy code
-git checkout -b feature/your-feature-name
-Commit your changes:
-bash
-Copy code
-git commit -am 'Add your feature'
-Push the branch:
-bash
-Copy code
-git push origin feature/your-feature-name
-Submit a pull request with a description of your changes.
+### 1. Session Management and Login Authentication
+
+The first part of the scraper handles authentication with the Telegram API. It checks for authorization, manages two-factor authentication, and provides a session string for subsequent scraping tasks.
+
+### 2. Main Scraper: Data and Media Collection
+
+The main scraping script uses the `GetHistoryRequest` function to iteratively fetch messages and media from the specified group or channel. It handles Telegram's rate limits by catching `FloodWaitError` exceptions and waiting before retrying requests.
+
+### 3. Data Merging
+
+After data collection, the scraper saves the messages and media information in multiple CSV files. The merging script consolidates these files into a single dataset for easier analysis.
+
+## Error Handling
+
+- **FloodWaitError**: Automatically waits for the required time if Telegram's rate limit is hit.
+- **SessionPasswordNeededError**: Handles two-factor authentication if enabled on the account.
+- General exceptions are caught and logged to ensure the scraper continues running smoothly.
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a pull request or open an issue to suggest improvements or report bugs.
+
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature/your-feature-name`).
+3. Commit your changes (`git commit -am 'Add your feature'`).
+4. Push to the branch (`git push origin feature/your-feature-name`).
+5. Open a pull request.
 
